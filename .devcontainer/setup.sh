@@ -24,6 +24,15 @@ if ! grep -q 'npm-global' "$HOME/.bashrc" 2>/dev/null; then
     echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> "$HOME/.bashrc"
 fi
 
+# Install tmux (terminal multiplexer)
+if ! command -v tmux &> /dev/null; then
+    echo "Installing tmux..."
+    sudo apt-get update && sudo apt-get install -y tmux
+    echo "tmux installed successfully"
+else
+    echo "tmux is already installed"
+fi
+
 # Install uv (fast Python package manager)
 if ! command -v uv &> /dev/null; then
     echo "Installing uv..."
