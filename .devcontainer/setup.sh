@@ -69,6 +69,34 @@ else
     echo "Codex CLI is already installed"
 fi
 
+# Install OpenCode
+if ! command -v opencode &> /dev/null; then
+    echo "Installing OpenCode..."
+    npm install -g opencode-ai --loglevel=error --no-fund --no-audit
+    echo "OpenCode installed successfully"
+else
+    echo "OpenCode is already installed"
+fi
+
+# Install SwarmTools (requires OpenCode)
+if ! command -v swarm &> /dev/null; then
+    echo "Installing SwarmTools..."
+    npm install -g opencode-swarm-plugin@latest --loglevel=error --no-fund --no-audit
+    if ! command -v bun &> /dev/null; then
+        echo "Installing Bun (required for SwarmTools)..."
+        curl -fsSL https://bun.sh/install | bash
+        export BUN_INSTALL="$HOME/.bun"
+        export PATH="$BUN_INSTALL/bin:$PATH"
+        echo "Bun installed successfully"
+    else
+        echo "Bun is already installed"
+    fi
+    swarm setup
+    echo "SwarmTools installed successfully"
+else
+    echo "SwarmTools is already installed"
+fi
+
 # Copy shell aliases if available
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 if [ -f "$SCRIPT_DIR/.bash_aliases" ]; then
