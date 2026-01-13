@@ -19,11 +19,11 @@ devpod up . --ide vscode
 ## Included Tools
 
 ### AI Coding Agents
-- Claude Code (Anthropic)
+- Claude Code (Anthropic) - installed via [native installer](https://claude.ai/install.sh)
 - Codex CLI (OpenAI)
 
 ### Development Tools
-- Node.js (for Claude Code and Codex CLI)
+- Node.js (for Codex CLI)
 - Python + uv
 - Rust + rust-analyzer
 - Git + GitHub CLI

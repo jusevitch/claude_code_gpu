@@ -50,11 +50,10 @@ echo "Installing Python 3.12 via uv..."
 uv python install 3.12
 echo "Python 3.12 installed"
 
-# Install Claude Code
-# Using --loglevel=error to reduce output and avoid TTY issues
+# Install Claude Code (native installer)
 if ! command -v claude &> /dev/null; then
     echo "Installing Claude Code..."
-    npm install -g @anthropic-ai/claude-code --loglevel=error --no-fund --no-audit
+    curl -fsSL https://claude.ai/install.sh | bash
     echo "Claude Code installed successfully"
 else
     echo "Claude Code is already installed"
