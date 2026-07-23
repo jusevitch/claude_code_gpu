@@ -121,6 +121,15 @@ else
     echo "Swarmtools is already installed"
 fi
 
+# Install Rust per-user (avoids the read-only image layer where rustup updates fail)
+export PATH="$HOME/.cargo/bin:$PATH"
+if ! command -v rustup &> /dev/null || [ ! -d "$HOME/.rustup" ]; then
+    echo "Installing Rust..."
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
+        sh -s -- -y --profile minimal \
+        --component rust-analyzer,rust-src,rustfmt,clippy
+fi
+
 # Install ripgrep
 install_apt_package "ripgrep" "rg"
 
