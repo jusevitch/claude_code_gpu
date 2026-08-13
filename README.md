@@ -1,3 +1,9 @@
+> [!WARNING]
+> This template is now deprecated.
+> A newer version can be found in the following repository:
+>
+> https://github.com/jusevitch/agent_devcontainer_gpu 
+
 # AI Coding Agents DevPod Template (GPU Support)
 
 Run AI coding agents safely inside Docker containers using DevPod with GPU support.
